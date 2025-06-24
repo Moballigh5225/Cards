@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 
 type deckCS []string
@@ -34,4 +37,10 @@ func (d deckCS) print(){
 // to shuffle
 func deal (d deckCS, handSize int) (deckCS, deckCS){
 	return d[:handSize], d[handSize:]
+}
+
+
+// deck to byte string
+func (d deckCS) toString() string {
+	return	strings.Join([]string(d), ",")
 }
