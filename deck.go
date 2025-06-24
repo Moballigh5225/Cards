@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -43,4 +44,9 @@ func deal (d deckCS, handSize int) (deckCS, deckCS){
 // deck to byte string
 func (d deckCS) toString() string {
 	return	strings.Join([]string(d), ",")
+}
+
+// save to file using new package os in place of deprecated package io/util
+func (d deckCS) saveToFile(filename string) error{
+		return os.WriteFile(filename, []byte(d.toString()), 0666)	
 }
