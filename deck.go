@@ -50,3 +50,15 @@ func (d deckCS) toString() string {
 func (d deckCS) saveToFile(filename string) error{
 		return os.WriteFile(filename, []byte(d.toString()), 0666)	
 }
+
+
+
+func newDeckFromFile(filename string) deckCS {
+	bs, err := os.ReadFile(filename)
+	if err != nil {
+		fmt.Println("ErrorBabu:",err)
+		os.Exit(1)
+	}
+	s :=strings.Split(string(bs), ",")
+	return deckCS(s)
+}	

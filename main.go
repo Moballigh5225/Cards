@@ -9,9 +9,9 @@ func main(){
 	// remainingCards.print()
 
 	// cards.toString()
-
-	cards.saveToFile("/test/myCards")
 	
+	cards.saveToFile("myCards")
+	(newDeckFromFile("my")).print()
 }
 
 
