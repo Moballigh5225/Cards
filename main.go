@@ -10,8 +10,11 @@ func main(){
 
 	// cards.toString()
 	
-	cards.saveToFile("myCards")
-	(newDeckFromFile("my")).print()
+	// cards.saveToFile("myCards")
+	// (newDeckFromFile("my")).print()
+
+	cards.shuffle()
+	cards.print()
 }
 
 
