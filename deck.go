@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 
@@ -64,9 +65,32 @@ func newDeckFromFile(filename string) deckCS {
 	return deckCS(s)
 }	
 
+// my random approch
+func randomSeedGen() int64{
+	return time.Now().UnixNano() + int64(time.Now().Second()*42)
+}
+/*
+// but this will effect the global rand
+func (d deckCS) shuffle() {
+	seed := randomSeedGen()
+	rand.Seed(seed)
+
+	for i := range d {
+		newPosition := rand.Intn(len(d))
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
+}
+*/
+
+
 func (d deckCS) shuffle(){
+	source := rand.NewSource(randomSeedGen())
+	r := rand.New(source)
+
+
+	
 	for i := range d{
-		newPosition := rand.Intn(len(d) - 1)
-		d[i], d[newPosition] = d[newPosition],d[i]
+		newPosition := r.Intn(len(d) - 1)
+		d[i] , d[newPosition] = d[newPosition],d[i]
 	}
 }
